@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ギフテッド実践リファレンス｜就労移行支援スタッフのために</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1a2f4a;
+  --navy-deep:#0e1c2e;
+  --teal:#2f7d78;
+  --teal-light:#5fa39d;
+  --amber:#d99a3f;
+  --amber-deep:#b87b28;
+  --cream:#faf5ea;
+  --cream-dark:#f0e6d2;
+  --ink:#2b3542;
+  --ink-soft:#5a6472;
+  --line:#dcd2ba;
+  --white:#fffdf8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Noto Sans JP',sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.85;
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:'Noto Serif JP',serif;color:var(--navy);}
+.container{max-width:820px;margin:0 auto;padding:0 28px;}
+
+/* ===== ナビ ===== */
+#navBar{
+  position:sticky;top:0;z-index:200;
+  background:rgba(250,245,234,0.96);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);
+}
+#navInner{
+  max-width:820px;margin:0 auto;padding:10px 28px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;
+}
+#navTitle{font-family:'Noto Serif JP',serif;font-size:15px;font-weight:600;color:var(--navy);white-space:nowrap;}
+#navToggle{
+  display:none;background:none;border:1px solid var(--navy);border-radius:6px;
+  width:36px;height:32px;cursor:pointer;color:var(--navy);
+  align-items:center;justify-content:center;
+}
+#navList{display:flex;gap:2px;flex-wrap:wrap;justify-content:flex-end;}
+.navLink{
+  font-size:11.5px;color:var(--ink-soft);background:none;border:none;cursor:pointer;
+  padding:6px 8px;border-radius:5px;white-space:nowrap;font-family:'Noto Sans JP',sans-serif;
+  transition:background .2s,color .2s;
+}
+.navLink:hover,.navLink.active{background:var(--teal);color:#fff;}
+
+/* ===== HERO ===== */
+.hero{
+  background:linear-gradient(180deg,var(--navy-deep) 0%,var(--navy) 100%);
+  color:var(--cream);
+  padding:80px 28px 64px;
+  position:relative;overflow:hidden;
+}
+.hero::after{
+  content:"";position:absolute;right:-80px;top:-80px;width:340px;height:340px;
+  border-radius:50%;background:radial-gradient(circle,rgba(217,154,63,0.18),transparent 70%);
+}
+.hero-inner{max-width:760px;margin:0 auto;position:relative;z-index:2;}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12.5px;letter-spacing:.08em;color:var(--amber);
+  border:1px solid rgba(217,154,63,.5);border-radius:20px;padding:6px 14px;margin-bottom:26px;
+}
+.hero h1{font-size:clamp(30px,5.2vw,44px);line-height:1.5;font-weight:700;margin-bottom:22px;color:#fff;}
+.hero h1 span{color:var(--amber);}
+.hero p{font-size:16px;color:#cfd9e2;max-width:600px;margin-bottom:14px;}
+.hero-note{
+  margin-top:30px;padding:16px 18px;background:rgba(255,255,255,.06);
+  border-left:3px solid var(--amber);border-radius:4px;font-size:14px;color:#e6ecef;
+}
+
+/* ===== 確度バッジ（全編を貫く装置） ===== */
+.confidence{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:11.5px;font-weight:600;padding:4px 11px;border-radius:20px;
+  letter-spacing:.03em;margin-bottom:14px;
+}
+.c-solid{background:#e4efe8;color:#1f6b4f;border:1px solid #a9d2bc;}
+.c-debate{background:#faf0dc;color:#9a6b1a;border:1px solid #ecceA0;}
+.c-unclear{background:#f4e9ec;color:#8a3f52;border:1px solid #e3bcc7;}
+
+/* ===== セクション共通 ===== */
+section.block{padding:64px 0;border-bottom:1px solid var(--line);}
+section.block:nth-child(even){background:var(--white);}
+.sec-eyebrow{
+  font-size:12px;color:var(--teal);letter-spacing:.12em;font-weight:600;margin-bottom:10px;
+}
+.sec-num{
+  font-family:'Noto Serif JP',serif;color:var(--line);font-size:13px;font-weight:600;
+}
+h2.sec-title{font-size:clamp(22px,3.6vw,28px);font-weight:600;margin-bottom:20px;line-height:1.55;}
+.lead{font-size:16px;color:var(--ink-soft);margin-bottom:28px;max-width:640px;}
+p{margin-bottom:16px;font-size:15.5px;}
+strong{color:var(--navy);font-weight:600;}
+
+/* ===== カード類 ===== */
+.card{
+  background:var(--white);border:1px solid var(--line);border-radius:10px;
+  padding:22px 24px;margin-bottom:16px;
+}
+section.block:nth-child(even) .card{background:var(--cream);}
+.card h4{font-size:15.5px;margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+.card p{font-size:14.5px;color:var(--ink-soft);margin-bottom:0;}
+.icon{flex-shrink:0;}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+
+/* ===== 比較テーブル風 ===== */
+.compare{border-radius:10px;overflow:hidden;border:1px solid var(--line);margin:20px 0;}
+.compare-row{display:grid;grid-template-columns:130px 1fr;border-bottom:1px solid var(--line);}
+.compare-row:last-child{border-bottom:none;}
+.compare-label{background:var(--navy);color:#fff;padding:14px 16px;font-size:13.5px;font-weight:600;display:flex;align-items:center;}
+.compare-value{background:var(--white);padding:14px 18px;font-size:14.5px;color:var(--ink-soft);display:flex;align-items:center;}
+
+/* ===== タイムライン(政策動向) ===== */
+.tline{position:relative;padding-left:28px;margin-top:24px;}
+.tline::before{content:"";position:absolute;left:6px;top:4px;bottom:4px;width:2px;background:var(--line);}
+.titem{position:relative;padding-bottom:26px;}
+.titem::before{
+  content:"";position:absolute;left:-28px;top:4px;width:12px;height:12px;border-radius:50%;
+  background:var(--teal);border:3px solid var(--cream);
+}
+.titem .tyear{font-family:'Noto Serif JP',serif;color:var(--amber-deep);font-weight:700;font-size:14px;margin-bottom:4px;}
+.titem p{font-size:14.5px;margin-bottom:0;color:var(--ink-soft);}
+
+/* ===== フローダイアグラム（ミスマッチモデル） ===== */
+.flow{display:flex;flex-direction:column;gap:10px;margin:24px 0;}
+.flow-box{
+  background:var(--white);border:1.5px solid var(--teal);border-radius:8px;
+  padding:14px 18px;font-size:14.5px;position:relative;
+}
+.flow-box.warn{border-color:var(--amber-deep);}
+.flow-arrow{align-self:center;color:var(--line);font-size:20px;}
+.flow-box b{color:var(--navy);}
+
+/* ===== OE 5類型 ===== */
+.oe-list{display:flex;flex-direction:column;gap:12px;margin:22px 0;}
+.oe-item{
+  display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;
+  background:var(--white);border:1px solid var(--line);border-radius:10px;padding:16px 18px;
+}
+.oe-tag{
+  font-family:'Noto Serif JP',serif;font-weight:700;color:#fff;background:var(--teal);
+  border-radius:6px;padding:6px 10px;font-size:12.5px;white-space:nowrap;height:fit-content;
+}
+.oe-item p{font-size:14.5px;margin-bottom:0;color:var(--ink-soft);}
+.oe-item h5{font-size:14.5px;color:var(--navy);margin-bottom:4px;}
+
+/* ===== 実践ポイント ===== */
+.practice{
+  display:flex;gap:16px;padding:18px 0;border-bottom:1px dashed var(--line);
+}
+.practice:last-child{border-bottom:none;}
+.practice .pnum{
+  font-family:'Noto Serif JP',serif;font-size:22px;font-weight:700;color:var(--amber);flex-shrink:0;width:34px;
+}
+.practice h4{font-size:15.5px;margin-bottom:6px;}
+.practice p{font-size:14.5px;color:var(--ink-soft);margin-bottom:0;}
+
+/* ===== まとめ・出典 ===== */
+.closing{background:var(--navy-deep);color:var(--cream);padding:70px 28px;}
+.closing .container{max-width:760px;}
+.closing h2{color:#fff;font-size:24px;margin-bottom:18px;}
+.closing p{color:#cfd9e2;font-size:15px;}
+.closing .card{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.15);}
+.closing .card p{color:#cfd9e2;}
+.closing .card h4{color:#fff;}
+
+.sources{background:var(--cream-dark);padding:56px 28px;}
+.source-item{
+  padding:14px 0;border-bottom:1px solid var(--line);font-size:14px;
+}
+.source-item:last-child{border-bottom:none;}
+.source-item a{color:var(--teal);text-decoration:none;word-break:break-all;}
+.source-item a:hover{text-decoration:underline;}
+.source-item .stype{
+  display:inline-block;font-size:10.5px;font-weight:700;color:#fff;background:var(--navy);
+  border-radius:4px;padding:2px 7px;margin-right:8px;letter-spacing:.03em;
+}
+
+footer{
+  text-align:center;padding:40px 28px;background:var(--navy-deep);color:#8fa0ac;font-size:13px;
+}
+
+/* ===== フェードイン ===== */
+.fade-in{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+.fade-in.show{opacity:1;transform:translateY(0);}
+
+/* ===== レスポンシブ ===== */
+@media (max-width:760px){
+  .grid2,.grid3{grid-template-columns:1fr;}
+  #navList{
+    display:none;position:absolute;top:100%;left:0;right:0;background:var(--cream);
+    flex-direction:column;border-bottom:1px solid var(--line);padding:8px 20px 16px;
+    max-height:70vh;overflow-y:auto;
+  }
+  #navList.open{display:flex;}
+  #navToggle{display:flex;}
+  .navLink{padding:10px 6px;text-align:left;}
+  .compare-row{grid-template-columns:100px 1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav id="navBar">
+  <div id="navInner">
+    <div id="navTitle">ギフテッド実践リファレンス</div>
+    <button id="navToggle" onclick="toggleNav()" aria-label="メニュー">
+      <svg width="18" height="14" viewBox="0 0 18 14" fill="none"><path d="M0 1H18" stroke="currentColor" stroke-width="2"/><path d="M0 7H18" stroke="currentColor" stroke-width="2"/><path d="M0 13H18" stroke="currentColor" stroke-width="2"/></svg>
+    </button>
+    <div id="navList">
+      <button class="navLink" onclick="jumpToSection('s01')">導入</button>
+      <button class="navLink" onclick="jumpToSection('s02')">定義</button>
+      <button class="navLink" onclick="jumpToSection('s03')">基準の混乱</button>
+      <button class="navLink" onclick="jumpToSection('s04')">非同期発達</button>
+      <button class="navLink" onclick="jumpToSection('s05')">IQの限界</button>
+      <button class="navLink" onclick="jumpToSection('s06')">過度激動</button>
+      <button class="navLink" onclick="jumpToSection('s07')">2E</button>
+      <button class="navLink" onclick="jumpToSection('s08')">ミスマッチ</button>
+      <button class="navLink" onclick="jumpToSection('s09')">職場</button>
+      <button class="navLink" onclick="jumpToSection('s10')">制度</button>
+      <button class="navLink" onclick="jumpToSection('s11')">批判的視点</button>
+      <button class="navLink" onclick="jumpToSection('s12')">政策動向</button>
+      <button class="navLink" onclick="jumpToSection('s13')">支援の実践</button>
+      <button class="navLink" onclick="jumpToSection('s14')">出典</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2L14.5 9H22L16 13.5L18 21L12 16.5L6 21L8 16.5L2 13.5H9.5L12 2Z" stroke="#d99a3f" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      就労移行支援スタッフ向け実践リファレンス
+    </div>
+    <h1>「ギフテッド」を<br>正しく、<span>誤解せず</span>理解する</h1>
+    <p>高い能力を持つ人が、なぜ職場でうまくいかないことがあるのか。その背景にある考え方と、まだ分かっていないことを、5分で整理します。</p>
+    <div class="hero-note">
+      <strong>この図解の立場：</strong> 「ギフテッド」は医学的診断名ではなく、統一された定義も判定基準も存在しない概念です。断定を避け、「確からしい情報」と「意見が分かれる情報」「まだよく分かっていない情報」を区別しながら解説します。
+    </div>
+  </div>
+</header>
+
+<!-- 01 導入：なぜ知る必要があるか -->
+<section class="block" id="s01">
+  <div class="container fade-in">
+    <div class="sec-eyebrow"><span class="sec-num">01</span> &nbsp;なぜ支援現場で知る必要があるか</div>
+    <h2 class="sec-title">「頑張りが足りない」のではなく、「合っていない」だけかもしれない</h2>
+    <p class="lead">就労移行支援の現場では、明らかに理解力や発想力が高いのに、職場に定着できない、評価されない、あるいは自分を「変わり者」だと感じ続けている利用者に出会うことがあります。その背景の一つとして知っておく価値があるのが「ギフテッド」という視点です。</p>
+    <div class="card">
+      <h4><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2f7d78" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>誤解しやすいポイント</h4>
+      <p>「ギフテッド＝天才・優等生」というイメージが先行しがちですが、実際には学校や職場で「扱いにくい人」「浮いている人」として扱われてきたケースが少なくありません。能力の高さが、むしろ生きづらさの入り口になっている場合があります。</p>
+    </div>
+    <p>この図解は、ギフテッドを「特別に優れた人を称える話」としてではなく、<strong>認知特性の違いによって環境とのミスマッチが起きやすい人たちを、どう理解し、どう支援に活かすか</strong>という実務的な視点で構成しています。</p>
+  </div>
+</section>
+
+<!-- 02 定義 -->
+<section class="block" id="s02">
+  <div class="container fade-in">
+    <div class="sec-eyebrow"><span class="sec-num">02</span> &nbsp;ギフテッドとは何か</div>
+    <span class="confidence c-solid">確度：高い（複数の公的定義が一致する部分）</span>
+    <h2 class="sec-title">「特定の領域で突出した能力を示す人」という緩やかな共通項</h2>
+    <p>ギフテッドという言葉に唯一の公式な定義はありませんが、代表的な定義にはいくつかの共通点があります。米国連邦政府の定義では、知性・創造性・芸術性・リーダーシップ・特定の学問分野のいずれかで平均を大きく上回る能力を示し、その能力を伸ばすために通常の教育以上の支援を必要とする人、とされています。全米ギフテッド児協会（NAGC）も同様に、1つまたは複数の領域で並外れた思考力や達成（上位10%程度、あるいは稀な偉業）を示すことを基準としています。</p>
+    <div class="compare">
+      <div class="compare-row">
+        <div class="compare-label">米国連邦定義</div>
+        <div class="compare-value">知性・創造性・芸術性・リーダーシップ・学問分野のいずれかで高い能力を示し、通常の学校教育を超える支援を要する子ども</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-label">NAGC</div>
+        <div class="compare-value">1つ以上の領域で並外れた思考力・能力（上位10%以上の達成、または稀な偉業）を示す</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-label">日本の文部科学省</div>
+        <div class="compare-value">「ギフテッド」という語は用いず「特定分野に特異な才能のある児童生徒」と表記。知能・創造性・芸術・運動・特定の学問能力等で一定以上の能力を示す者</div>
+      </div>
+    </div>
+    <div class="card">
+      <h4><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b87b28" stroke-width="1.8"><path d="M12 3v12M12 15l-4-4M12 15l4-4"/><rect x="4" y="18" width="16" height="3" rx="1"/></svg>なぜ文科省は「ギフテッド」と言わないのか</h4>
+      <p>文部科学省は、「ギフテッド」という言葉は人によって受け取り方のイメージが異なりやすいとして、あえて用いず「特定分野に特異な才能のある児童生徒」という表現を使っています。これは、エリート選抜のようなニュアンスを避け、多様な子どもたちの中の一つの特性として位置づけるための配慮でもあります。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 定義の混乱 -->
+<section class="block" id="s03">
+  <div class="container fade-in">
+    <div class="sec-eyebrow"><span class="sec-num">03</span> &nbsp;基準の混乱という前提</div>
+    <span class="confidence c-solid">確度：高い（統一基準が存在しないこと自体は広く一致）</span>
+    <h2 class="sec-title">「診断」ではなく、国・機関ごとに異なるものさし</h2>
+    <p>まず押さえておくべき最も重要な前提は、<strong>ギフテッドに医学的な診断基準は存在しない</strong>ということです。国や州、研究者によって定義も判定方法も異なり、国際的に統一された基準はありません。アメリカ国内でさえ州によって定義が異なります。</p>
+    <p>そのため支援現場では、「ギフテッドかどうか」を厳密に判定しようとするより、<strong>本人がどのような認知特性を持ち、どこにミスマッチが生じているか</strong>を具体的に把握する方が実務的に有用です。「診断名」ではなく「特性の見取り図」として捉える視点が重要になります。</p>
+  </div>
+</section>
+
+<!-- 04 非同期発達 -->
+<section class="block" id="s04">
+  <div class="container fade-in">
+    <div class="sec-eyebrow"><span class="sec-num">04</span> &nbsp;認知的特性①</div>
+    <span class="confidence c-debate">確度：中（有力な理論だが、単一の確立した測定法はない）</span>
+    <h2 class="sec-title">能力の発達が、領域ごとに大きくズレる「非同期発達」</h2>
+    <p>ギフテッドを理解するうえで重要な概念の一つが「非同期発達（asynchronous development）」です。1991年に研究者・実践者・保護者が集まった「コロンバス・グループ」が提唱した考え方で、高い認知能力と強い感受性が組み合わさることで、内面の経験や気づきが平均的な発達とは質的に異なるものになる、と説明されています。知的能力の発達度合いが高いほど、この非同期性は大きくなるとされます。</p>
+    <div class="flow">
+      <div class="flow-box"><b>知的側面</b>：年齢よりはるかに高いレベルで理解・思考できる</div>
+      <div class="flow-arrow">⇅ ズレ</div>
+      <div class="flow-box warn"><b>情緒・社会的側面</b>：年齢相応、あるいはそれ以下の発達段階にとどまることがある</div>
+    </div>
+    <p>このズレが、「議論では大人顔負けなのに、感情の切り替えは年齢相応で難しい」といった、周囲から見て一貫性のない印象を生む一因になります。子どもの事例をもとに整理された概念ですが、成人期にも本人の中に「思考の速さ」と「対人関係での立ち回り」のギャップとして残り続けることがあると考えられています。</p>
+  </div>
+</section>
+
+<!-- 05 IQ -->
+<section class="block" id="s05">
+  <div class="container fade-in">
+    <div class="sec-eyebrow"><span class="sec-num">05</span> &nbsp;認知的特性②</div>
+    <span class="confidence c-debate">確度：中（歴史的指標だが、単独の基準としては否定的な見解が主流）</span>
+    <h2 class="sec-title">IQ130という数字が独り歩きしやすい理由</h2>
+    <p>ギフテッドの説明でよく登場するのが「IQ130以上」という基準です。知能検査の平均値は100、標準偏差15で設計されており、130はおおよそ上位2%に相当する水準です。1960年代以前はこの数値だけでギフテッドを判定する考え方が主流でした。</p>
+    <div class="card">
+      <h4><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2f7d78" stroke-width="1.8"><path d="M4 19V5M4 19h16M8 19v-6M12 19v-9M16 19v-4"/></svg>しかし、今はIQ単独では判定しない</h4>
+      <p>創造性・芸術性・想像力といった能力はIQ検査では測れないため、現在はIQを唯一の判断基準とする考え方は専門家の間で支持されなくなっています。学業成績や指導者の推薦、行動観察など複数の情報を組み合わせて総合的に評価すべきだ、というのが現在の主流の考え方です。また、IQ検査は高得点者同士の優劣を判別する精度に限界があるという指摘もあります。</p>
+    </div>
+    <p>支援現場での実務上の含意としては、「IQ○○だからギフテッド」という単純化した理解は避け、あくまで一つの参考情報として扱うことが望ましいといえます。</p>
+  </div>
+</section>
+
+<!-- 06 過度激動 -->
+<section class="block" id="s06">
+  <div class="container fade-in">
+    <div class="sec-eyebrow"><span class="sec-num">06</span> &nbsp;認知的特性③</div>
+    <span class="confidence c-unclear">確度：低〜中（理論的関心は高いが、実証研究には明確な限界と誤用の指摘がある）</span>
+    <h2 class="sec-title">「過度激動（OE）」という感受性の強さの理論</h2>
+    <p>ポーランドの精神科医カジミェシュ・ドンブロフスキが提唱した「積極的分離理論（Theory of Positive Disintegration）」の中に、「過度激動（Overexcitability, OE）」という概念があります。刺激に対する平均以上の反応性を指し、精神運動・感覚・想像・知性・情緒の5つのタイプに分けて説明されます。</p>
+    <div class="oe-list">
+      <div class="oe-item"><span class="oe-tag">精神運動</span><div><h5>Psychomotor</h5><p>エネルギーが有り余り、早口・貧乏ゆすり・過活動などとして現れやすい</p></div></div>
+      <div class="oe-item"><span class="oe-tag">感覚</span><div><h5>Sensual</h5><p>音・光・匂い・肌触りなど感覚刺激への反応が強い</p></div></div>
+      <div class="oe-item"><span class="oe-tag">想像</span><div><h5>Imaginational</h5><p>豊かな空想力、白昼夢、比喩的思考への強い傾向</p></div></div>
+      <div class="oe-item"><span class="oe-tag">知性</span><div><h5>Intellectual</h5><p>知的好奇心が非常に強く、考えること自体を目的として没頭する</p></div></div>
+      <div class="oe-item"><span class="oe-tag">情緒</span><div><h5>Emotional</h5><p>共感性・感受性が強く、感情の振れ幅が大きい</p></div></div>
+    </div>
+    <div class="card">
+      <h4><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8a3f52" stroke-width="1.8"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.7-3.1l-8-14a2 2 0 0 0-3.4 0z"/></svg>知っておくべき限界と誤用リスク</h4>
+      <p>OEはギフテッド研究の枠を超え、自閉スペクトラム症・ADHD・てんかんなどにも関わる神経科学的な現象として研究されている一方、「OEの尺度でギフテッドを識別できる」という主張には方法論上の懸念が指摘されています。また、本来は積極的分離理論という人格発達論全体の一部であるにもかかわらず、「ギフテッドの特徴リスト」として単純化されて紹介される傾向があり、研究者自身がこの誤用を問題視しています。「感受性が強い＝ギフテッド」という短絡的な理解は避ける必要があります。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 07 2E -->
+<section class="block" id="s07">
+  <div class="container fade-in">
+    <div class="sec-eyebrow"><span class="sec-num">07</span> &nbsp;ギフテッドと発達障害の関係</div>
+    <span class="confidence c-debate">確度：中（臨床的な概念として広く使われるが、公式な診断基準はない）</span>
+    <h2 class="sec-title">「2E（Twice-Exceptional）」＝ 才能と困難が同居する状態</h2>
+    <p>ギフテッドと発達障害はまったく別のものではありません。高い知的能力・創造性を持ちながら、同時にADHDやASDなどの発達障害の特性も併せ持つ人は「2E（Twice-Exceptional、二重に特別な人）」と呼ばれます。読み書きに困難を抱えながら高度な数学で高い成果を出す、対人コミュニケーションには苦手さがありながら特定分野で深い専門性を発揮する、など特性の現れ方は一人ひとり異なります。</p>
+    <div class="card">
+      <h4><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2f7d78" stroke-width="1.8"><circle cx="9" cy="9" r="3.2"/><circle cx="15" cy="15" r="3.2"/></svg>才能と困難が「相殺」して見えなくなるケース</h4>
+      <p>2Eの中には、高い能力と発達上の困難が互いに打ち消し合い、外からは「平均的」に見えてしまうタイプもあると指摘されています。この場合、才能も困難も両方とも見過ごされやすく、必要な支援につながりにくいという問題があります。</p>
+    </div>
+    <p><strong>誤診の問題</strong>にも注意が必要です。米国の臨床心理学者ジェームズ・T・ウェッブらは、著書『ギフテッドの誤診と重複診断』の中で、ギフテッドの特性（強い感受性や過集中など）がADHD・双極症・強迫症などと誤って診断されるパターンを詳しく指摘しています。これは「ギフテッドなら発達障害ではない」という意味ではなく、<strong>安易な自己診断や早計なラベリングを避け、専門家による丁寧な評価が必要</strong>だという含意として理解すべき指摘です。</p>
+    <p>2E自体は障害ではないため通常は障害者手帳の対象になりませんが、発達障害の診断基準を満たす場合には、精神障害者保健福祉手帳の取得や障害者雇用枠での就労が選択肢になり得ます。</p>
+  </div>
+</section>
+
+<!-- 08 ミスマッチモデル -->
+<section class="block" id="s08">
+  <div class="container fade-in">
+    <div class="sec-eyebrow"><span class="sec-num">08</span> &nbsp;生きづらさのメカニズム</div>
+    <span class="confidence c-debate">確度：中（臨床的知見として広く支持されるが、体系的な実証研究は限定的）</span>
+    <h2 class="sec-title">問題は「本人」ではなく「環境との相性」</h2>
+    <p class="lead">KBCの支援の基本姿勢とも重なる重要な視点として、ギフテッドの人が経験するメンタルヘルスの困難は、ギフテッドであること自体から生じるのではなく、「環境とのミスマッチ」から生じると理解されています。</p>
+    <div class="flow">
+      <div class="flow-box"><b>認知特性</b>：思考速度が速い／情報処理の様式が独特／興味関心が特定領域に極端に深い</div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-box warn"><b>環境とのズレ</b>：標準化された業務ペース・評価基準・コミュニケーション様式と噛み合わない</div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-box warn"><b>結果として生じやすいこと</b>：自己否定感、孤立感、燃え尽き、「自分の努力不足では」という誤った自責</div>
+    </div>
+    <p>この整理が支援現場にとって重要なのは、<strong>「本人を環境に合わせて矯正する」のではなく「本人の特性に環境側を近づける」発想に転換できる</strong>点です。これはKBCが重視してきた「個人の問題ではなく構造的・社会的要因として現象を捉える」というフレーミングと基本的な方向性が一致します。</p>
+  </div>
+</section>
+
+<!-- 09 職場 -->
+<section class="block" id="s09">
+  <div class="container fade-in">
+    <div class="sec-eyebrow"><span class="sec-num">09</span> &nbsp;職場で起こりやすいパターン</div>
+    <span class="confidence c-debate">確度：中（当事者の報告・臨床知見に基づく傾向であり、全員に当てはまるわけではない）</span>
+    <h2 class="sec-title">「優秀なのにうまくいかない」の内実</h2>
+    <div class="grid2">
+      <div class="card">
+        <h4><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#b87b28" stroke-width="1.8"><path d="M8 12h8M8 16h5M21 12c0 4.4-4 8-9 8-1.4 0-2.7-.3-3.9-.8L3 21l1.3-4C3.5 15.7 3 13.9 3 12c0-4.4 4-8 9-8s9 3.6 9 8z"/></svg>会話のすれ違い</h4>
+        <p>思考のスピードが速いため、相手の話の結論を先回りして理解したり、話の途中で関連する別の論点に飛んだりしやすくなります。悪気がなくても「話を聞いていない」「上から目線」と受け取られることがあります。</p>
+      </div>
+      <div class="card">
+        <h4><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#b87b28" stroke-width="1.8"><path d="M3 3v18h18M7 15l4-4 3 3 5-6"/></svg>「正論」と組織文化の衝突</h4>
+        <p>非効率な慣行を論理的に指摘すること自体は誤りではなくても、「角を立てたくない」という組織文化と衝突しやすく、「協調性がない」「空気が読めない」という評価につながりやすい傾向があります。</p>
+      </div>
+      <div class="card">
+        <h4><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#b87b28" stroke-width="1.8"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>アンダーアチーブメント</h4>
+        <p>能力に見合わない成果しか出せない状態を指します。単調な業務への強い退屈、興味が持てない課題への集中力低下などが背景にあり、「怠けている」と誤解されやすい現象です。</p>
+      </div>
+      <div class="card">
+        <h4><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#b87b28" stroke-width="1.8"><path d="M12 2C8 6 6 9 6 13a6 6 0 0012 0c0-4-2-7-6-11z"/></svg>燃え尽き・自責の連鎖</h4>
+        <p>完璧を求めすぎる傾向や、理想と現実のギャップに苦しみやすいことから燃え尽き症候群に陥りやすいとされます。「合わないのは自分の努力不足では」という自責のループに陥りやすい点も報告されています。</p>
+      </div>
+      <div class="card">
+        <h4><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#b87b28" stroke-width="1.8"><path d="M17.94 17.94A10.94 10.94 0 0112 20c-7 0-11-8-11-8a19.42 19.42 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a19.5 19.5 0 01-2.16 3.19M14.12 14.12a3 3 0 11-4.24-4.24"/><path d="M1 1l22 22"/></svg>「うまく擬態できている人」ほど見過ごされる</h4>
+        <p>能力の高さも困難も周囲に気づかれないまま「普通にやれている人」として過ごし続けるパターンです。特に女性は、周囲に合わせて能力を控えめに見せたり対人関係を優先して特性を隠したりする傾向が指摘されており、結果としてASD・ADHD等の特性の発見が遅れることがあります。この「擬態（マスキング）」は本人にとって強い消耗を伴うとされ、「特に困っていません」という言葉の裏に長期間の適応努力が隠れている場合があります。</p>
+      </div>
+    </div>
+    <p>一方で、こうした特性がプラスに働く場面もあります。複雑な問題への高い解決力、独自の視点からの発想、深い専門性の獲得などは、業務内容や裁量の与え方次第で大きな強みになり得ます。<strong>「特性がどう出るか」は環境要因に大きく左右される</strong>という点が重要です。</p>
+    <div class="card">
+      <h4><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2f7d78" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>「悩める天才」神話は、実は実証されていない</h4>
+      <p>2024年に発表された系統的レビュー・メタ分析（Gifted Child Quarterly誌、27件の不安研究・15件の抑うつ研究を統合）では、ギフテッドの人と非ギフテッドの人との間で、不安・抑うつのレベルに統計的に有意な差は見られませんでした。研究間のばらつきが大きいため慎重な解釈が必要ですが、少なくとも「知能が高いほどメンタルヘルスが不安定になる」という一般的なイメージを裏づける強い根拠は、現時点の研究では確認されていません。困難は「ギフテッドだから」自動的に生じるのではなく、環境とのミスマッチが積み重なった結果として生じる、という本図解全体の立場とも一致する知見です。</p>
+    </div>
+    <div class="card">
+      <h4><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2f7d78" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4v3M16 4v3"/></svg>職場側でできる具体的な配慮の例</h4>
+      <p>体系的な効果検証はまだ少ないものの、実務家や職業医の報告として有効性が示唆されている配慮には、単調な反復作業の比率を下げ裁量のある業務を組み合わせること、フィードバックや評価の頻度・粒度を細かくすること、業務の目的や背景を先に共有し「なぜこの作業が必要か」への納得感を確保すること、などがあります。KBCの職場開拓・定着支援でジョブクラフティングの視点を用いる際、こうした特性を踏まえた業務設計は特に効果を発揮しやすいと考えられます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 10 制度 -->
+<section class="block" id="s10">
+  <div class="container fade-in">
+    <div class="sec-eyebrow"><span class="sec-num">10</span> &nbsp;障害福祉制度との接点</div>
+    <span class="confidence c-solid">確度：高い（制度上の位置づけについては明確）</span>
+    <h2 class="sec-title">ギフテッド単体では、就労移行支援の対象にならない</h2>
+    <p>実務上、最も誤解が生じやすいポイントです。ギフテッドそのものは障害ではないため、それだけを理由に障害者手帳が交付されることはなく、就労移行支援の対象にもなりません。支援の対象になり得るのは、<strong>本人が精神障害・発達障害等の診断基準を満たしている場合</strong>、あるいはそれに伴う二次的な精神的不調（うつ、適応障害など）で通院・治療を受けている場合です。</p>
+    <div class="card">
+      <h4><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2f7d78" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>現場での実務的な整理</h4>
+      <p>「ギフテッドかもしれない」という自己理解そのものを支援の起点にするのではなく、既存の診断・手帳制度の枠組みの中で、本人の困りごとと必要な配慮を具体的に把握していくことが引き続き基本となります。ギフテッドという視点は、その困りごとの背景を理解するための補助線として位置づけるのが適切です。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 11 批判的視点 -->
+<section class="block" id="s11">
+  <div class="container fade-in">
+    <div class="sec-eyebrow"><span class="sec-num">11</span> &nbsp;批判的視点・限界</div>
+    <span class="confidence c-unclear">確度：概念そのものの評価には研究者間で明確な相違がある</span>
+    <h2 class="sec-title">この概念には、まだ解決されていない弱点がある</h2>
+    <p>エビデンスベースドな支援を行う上で、ギフテッド概念に対する批判的な視点も正確に押さえておく必要があります。</p>
+    <div class="card">
+      <h4><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8a3f52" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>統一された判定基準が存在しない</h4>
+      <p>国・州・研究者ごとに定義が異なり、単一の確立した診断基準がないため、「誰がギフテッドか」という問いに客観的な答えを出すことが構造的に難しい概念です。これは医学的診断とは性質が異なる点として、繰り返し強調する必要があります。</p>
+    </div>
+    <div class="card">
+      <h4><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8a3f52" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>理論の一部は実証研究の蓄積が薄い</h4>
+      <p>過度激動（OE）を含め、ギフテッド研究で頻繁に参照される理論の中には、量的な実証研究がまだ限定的なものや、原典の理論的文脈から切り離されて単純化・誤用されているという指摘があるものが含まれます。「感受性が強い＝ギフテッドの証拠」といった短絡的な解釈は避けるべきです。</p>
+    </div>
+    <div class="card">
+      <h4><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8a3f52" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>ラベル化そのもののリスク</h4>
+      <p>「ギフテッド」という自己理解が、生きづらさの説明として本人に安心をもたらす場合がある一方で、安易な自己診断や過剰な意味づけにつながるリスクも指摘されています。本人が自分自身に貼るラベルとしても、支援者が他者に貼るラベルとしても、慎重な扱いが必要です。</p>
+    </div>
+    <div class="card">
+      <h4><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8a3f52" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>「HSP」との混同にも注意</h4>
+      <p>面談の場では「自分はギフテッドだと思う」より「自分はHSP（繊細さん）だと思う」という語りに出会う方がずっと多いはずです。実はHSPも医学的診断名ではなく、心理学者エレイン・アーロンが提唱した気質概念（正式には「感覚処理感受性」）で、既存の性格特性（神経症傾向・開放性など）と重なりすぎているという批判が研究者から出ています。過度激動（OE）とHSPは「刺激への反応性が強い」という記述が似ているため混同されがちですが、どちらも非医学的な自己理解のラベルの一つに過ぎません。「HSPだから」「ギフテッドだから」と原因を一元化せず、本人がどんな場面で困っているかという具体に立ち返ることが重要です。</p>
+    </div>
+    <p>これらの限界を踏まえると、支援現場で重要なのは「この人はギフテッドかどうか」を判定することではなく、<strong>ギフテッドという枠組みが提示する視点（非同期発達、環境とのミスマッチなど）を、本人理解のための一つの補助的なレンズとして活用すること</strong>だといえます。</p>
+  </div>
+</section>
+
+<!-- 12 政策動向 -->
+<section class="block" id="s12">
+  <div class="container fade-in">
+    <div class="sec-eyebrow"><span class="sec-num">12</span> &nbsp;日本の政策動向</div>
+    <span class="confidence c-solid">確度：高い（公表資料に基づく事実の推移）</span>
+    <h2 class="sec-title">まだ始まったばかりの公的支援</h2>
+    <p>日本の公教育における「特異な才能のある児童生徒」支援は、諸外国と比較すると発展途上の段階にあります。</p>
+    <div class="tline">
+      <div class="titem"><div class="tyear">2021年6月</div><p>文部科学省が「特定分野に特異な才能のある児童生徒に対する学校における指導・支援の在り方等に関する有識者会議」を設置。</p></div>
+      <div class="titem"><div class="tyear">2022年9月26日</div><p>有識者会議が第14回会合で審議のまとめを取りまとめ、公表。特異な才能のある子だけを選抜するのではなく、多様性を認め合う「個別最適な学び」の一環として、一律の基準を設けずに支援を進める方向性が示される。</p></div>
+      <div class="titem"><div class="tyear">2023年度〜</div><p>「特異な才能のある児童生徒の支援の推進事業」が本格始動。研修パッケージの作成、特性把握ツールや支援プログラムに関するデータ収集、実証研究などの4本柱で展開。</p></div>
+      <div class="titem"><div class="tyear">2025年9月26日</div><p>中央教育審議会の教育課程部会に「特定分野に特異な才能のある児童生徒に係る特別の教育課程ワーキンググループ」が新設され、第1回会合が開催。次期学習指導要領に向け、才能の伸長を制度化する検討が始まる。</p></div>
+      <div class="titem"><div class="tyear">2025年11月13日</div><p>同ワーキンググループ第3回にて、特別の教育課程で実施する対象教科として、日常的な見取りで判断しやすい算数・数学、理科などから着手する案が示される（他教科を排除する趣旨ではないと文科省は説明）。「飛び級」等の「完全早修」は想定しない方針も確認。</p></div>
+    </div>
+    <p>制度はまだ審議段階にあり、就労支援・福祉の枠組みとは現時点で直接結びついていません。教育分野での動きが、将来的に成人期の理解や支援のあり方にも影響していく可能性はありますが、現状は<strong>「まだ制度化されていない」という事実自体</strong>を正確に押さえておくことが重要です。</p>
+  </div>
+</section>
+
+<!-- 13 実践ポイント -->
+<section class="block" id="s13">
+  <div class="container fade-in">
+    <div class="sec-eyebrow"><span class="sec-num">13</span> &nbsp;支援現場での実践ポイント</div>
+    <h2 class="sec-title">明日からの面談・支援で意識したいこと</h2>
+    <div class="practice">
+      <div class="pnum">01</div>
+      <div><h4>「診断」ではなく「特性の言語化」として扱う</h4><p>ギフテッドかどうかを判定しようとせず、本人がどんな場面で困り感を抱きやすいか、どんな環境なら力を発揮しやすいかを具体的に言語化する材料として活用します。</p></div>
+    </div>
+    <div class="practice">
+      <div class="pnum">02</div>
+      <div><h4>「怠け」「協調性の欠如」に見える行動の背景を疑う</h4><p>アンダーアチーブメントや対人的な摩擦は、本人の意欲や性格の問題ではなく、認知特性と環境のミスマッチから生じている可能性を、支援方針を立てる際の選択肢の一つとして持っておきます。</p></div>
+    </div>
+    <div class="practice">
+      <div class="pnum">03</div>
+      <div><h4>自己診断的な発言には慎重に向き合う</h4><p>利用者本人が「自分はギフテッドだと思う」と語る場合、その自己理解を否定も肯定もせず受け止めつつ、必要に応じて医療機関等の専門的評価につなげる視点を持ちます。</p></div>
+    </div>
+    <div class="practice">
+      <div class="pnum">04</div>
+      <div><h4>就労先とのマッチングでは「業務の粒度」に注目する</h4><p>単調な反復業務が続く環境より、裁量や専門性を活かせる要素がある業務の方が力を発揮しやすい傾向があるとされます。職場開拓・実習先選定の視点の一つとして検討します。</p></div>
+    </div>
+    <div class="practice">
+      <div class="pnum">05</div>
+      <div><h4>2Eの可能性がある場合は、才能と困難の両方を記録する</h4><p>困難さの記録に偏ると強みが見えなくなり、強みばかりに注目すると困難さが見過ごされます。両方を同じ重みで記録し、ケース会議で共有することが望ましいといえます。</p></div>
+    </div>
+    <div class="practice">
+      <div class="pnum">06</div>
+      <div><h4>面談では「特性が見える具体的な場面」を聞く</h4><p>「ギフテッドだと思いますか」と直接尋ねても本人も判断できません。代わりに、「一つのことに没頭して時間を忘れた経験は」「単純作業のときに頭の中で何を考えているか」「職場で『指摘してよかったのか分からなかった』場面はあったか」「学生時代、周りのペースに合わせるのがしんどかった記憶は」といった、具体的な場面を尋ねる問いかけの方が、特性の輪郭をつかみやすくなります。</p></div>
+    </div>
+    <div class="practice">
+      <div class="pnum">07</div>
+      <div><h4>「困っていません」を額面通り受け取りすぎない</h4><p>長年にわたり周囲に合わせて能力や特性を隠す「擬態」を続けてきた人は、困りごとを聞かれても反射的に「大丈夫です」と答えがちです。一度の面談で判断せず、複数回のやり取りや行動観察を通じて、本人も気づいていない適応疲労のサインがないかを継続的に見ていく視点を持ちます。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="container fade-in">
+    <h2>まとめ：ラベルではなく、理解のための視点として</h2>
+    <p>ギフテッドは診断名ではなく、統一された基準もない、輪郭の曖昧な概念です。だからこそ「この人はギフテッドだ」と断定することよりも、非同期発達・環境とのミスマッチ・2Eといった考え方を、目の前の利用者の困りごとを立体的に理解するための<strong style="color:#fff;">補助線</strong>として使うことが、支援現場にとって最も実務的な活用法だと考えられます。</p>
+    <div class="card">
+      <h4>ケース検討への招待</h4>
+      <p>朝礼やケース会議で、「能力は高いのに評価されにくい」「本人の頑張りと成果が噛み合っていない」と感じる利用者がいれば、この図解で紹介した「環境とのミスマッチ」という視点を一度当てはめて話し合ってみませんか。</p>
+    </div>
+  </div>
+</section>
+
+<section class="sources" id="s14">
+  <div class="container fade-in">
+    <div class="sec-eyebrow"><span class="sec-num">14</span> &nbsp;情報源</div>
+    <h2 class="sec-title" style="font-size:20px;">一次情報・信頼できる情報源</h2>
+    <div class="source-item"><span class="stype">公的機関</span>文部科学省「５．児童生徒の発達の支援」（2E脚注定義の一次出典）<br><a href="https://www.mext.go.jp/a_menu/shotou/new-cs/senseiouen/mext_01512.html" target="_blank" rel="noopener">mext.go.jp/a_menu/shotou/new-cs/senseiouen/mext_01512.html</a></div>
+    <div class="source-item"><span class="stype">公的機関</span>文部科学省「特定分野に特異な才能のある児童生徒に対する学校における指導・支援の在り方等に関する有識者会議」審議のまとめ（令和4年9月）<br><a href="https://www.mext.go.jp/content/20220726-mxt_kyoiku02_000024176_001.pdf" target="_blank" rel="noopener">mext.go.jp（審議のまとめ素案PDF）</a></div>
+    <div class="source-item"><span class="stype">公的機関</span>文部科学省「特定分野に特異な才能のある児童生徒に係る特別の教育課程ワーキンググループ」配布資料一覧（第1〜3回、2025年9〜11月）<br><a href="https://www.mext.go.jp/b_menu/shingi/chukyo/chukyo3/120/index.html" target="_blank" rel="noopener">mext.go.jp（同WG委員名簿・配布資料）</a></div>
+    <div class="source-item"><span class="stype">報道（一次）</span>教育新聞「特異な才能ある子『多様性の一環』で支援 文科省審議まとめ」（2022年9月26日配信）<br><a href="https://www.kyobun.co.jp/article/20220926-06" target="_blank" rel="noopener">kyobun.co.jp/article/20220926-06</a></div>
+    <div class="source-item"><span class="stype">報道（一次）</span>教育新聞「特別な教育課程で実施する活動 部分的な早修や大学との連携を提案」（2025年11月14日配信、WG第3回の詳報）<br><a href="https://www.kyobun.co.jp/article/2025111401" target="_blank" rel="noopener">kyobun.co.jp/article/2025111401</a></div>
+    <div class="source-item"><span class="stype">団体</span>National Association for Gifted Children「Asynchronous Development」<br><a href="https://dev.nagc.org/resources-publications/resources-parents/social-emotional-issues/asynchronous-development" target="_blank" rel="noopener">nagc.org（Asynchronous Development）</a></div>
+    <div class="source-item"><span class="stype">団体</span>Davidson Institute「Giftedness: The view from within」（コロンバス・グループ1991年の定義を引用）<br><a href="https://www.davidsongifted.org/gifted-blog/giftedness-the-view-from-within/" target="_blank" rel="noopener">davidsongifted.org/gifted-blog/giftedness-the-view-from-within</a></div>
+    <div class="source-item"><span class="stype">百科事典</span>Wikipedia「Overexcitability」（過度激動の学術的位置づけの概観）<br><a href="https://en.wikipedia.org/wiki/Overexcitability" target="_blank" rel="noopener">en.wikipedia.org/wiki/Overexcitability</a></div>
+    <div class="source-item"><span class="stype">専門機関</span>Dabrowski Center（積極的分離理論の専門機関。理論の誤用・限界についての議論を含む）<br><a href="https://dabrowskicenter.org/episode-2-overexcitabilities-and-pseudoscience/" target="_blank" rel="noopener">dabrowskicenter.org（Overexcitabilities and Pseudoscience）</a></div>
+    <div class="source-item"><span class="stype">百科事典</span>Wikipedia「ギフテッド」（日本語版。IQ基準の歴史的変遷と限界についての整理）<br><a href="https://ja.wikipedia.org/wiki/%E3%82%AE%E3%83%95%E3%83%86%E3%83%83%E3%83%89" target="_blank" rel="noopener">ja.wikipedia.org/wiki/ギフテッド</a></div>
+    <div class="source-item"><span class="stype">書籍</span>James T. Webb 他『Misdiagnosis and Dual Diagnoses of Gifted Children and Adults』第2版（2016年）／邦訳『ギフティッド その誤診と重複診断』（誤診パターンに関する臨床的知見の一次資料）</div>
+    <div class="source-item"><span class="stype">論文（メタ分析）</span>Duplenne, L. et al. (2024) "Anxiety and Depression in Gifted Individuals: A Systematic and Meta-Analytic Review," Gifted Child Quarterly, 68(1), 65–83.<br><a href="https://doi.org/10.1177/00169862231208922" target="_blank" rel="noopener">doi.org/10.1177/00169862231208922</a></div>
+    <div class="source-item"><span class="stype">百科事典</span>Wikipedia「ハイリー・センシティブ・パーソン」（HSPが心理学上・精神医学上の確立した概念ではないことの整理）<br><a href="https://ja.wikipedia.org/wiki/%E3%83%8F%E3%82%A4%E3%83%AA%E3%83%BC%E3%83%BB%E3%82%BB%E3%83%B3%E3%82%B7%E3%83%86%E3%82%A3%E3%83%96%E3%83%BB%E3%83%91%E3%83%BC%E3%82%BD%E3%83%B3" target="_blank" rel="noopener">ja.wikipedia.org/wiki/ハイリー・センシティブ・パーソン</a></div>
+    <div class="source-item"><span class="stype">団体</span>Japan Sensitivity Research（研究にもとづくHSP情報。日本心理学会員による運営）<br><a href="https://www.japansensitivityresearch.com/about-sensitivity" target="_blank" rel="noopener">japansensitivityresearch.com/about-sensitivity</a></div>
+    <div class="source-item"><span class="stype">団体</span>Davidson Institute「Gifted Adults in Work」（職業医の視点からの成人期ギフテッドの職場困難と対応）<br><a href="https://www.davidsongifted.org/gifted-blog/gifted-adults-in-work/" target="_blank" rel="noopener">davidsongifted.org/gifted-blog/gifted-adults-in-work</a></div>
+    <p style="font-size:12.5px;color:#8a7f63;margin-top:18px;">※本図解は上記情報源および関連する専門機関・報道資料をもとに作成した実践リファレンスです。ギフテッドに関する学術的知見は現在も発展途上にあり、将来的に見解が更新される可能性があります。特定の利用者への支援方針は、必ず個別の状況と専門家の判断に基づいて検討してください。</p>
+  </div>
+</section>
+
+<footer>岡村雄一郎</footer>
+
+<script>
+function jumpToSection(id){
+  var el = document.getElementById(id);
+  if(el){ el.scrollIntoView({behavior:'smooth', block:'start'}); }
+  var list = document.getElementById('navList');
+  if(list.classList.contains('open')){ list.classList.remove('open'); }
+}
+function toggleNav(){
+  document.getElementById('navList').classList.toggle('open');
+}
+
+// フェードイン
+(function(){
+  var targets = document.querySelectorAll('.fade-in');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('show');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+  targets.forEach(function(t){ io.observe(t); });
+})();
+
+// ナビのアクティブ状態
+(function(){
+  var sections = document.querySelectorAll('section.block, section.sources');
+  var links = document.querySelectorAll('.navLink');
+  var map = {'s01':0,'s02':1,'s03':2,'s04':3,'s05':4,'s06':5,'s07':6,'s08':7,'s09':8,'s10':9,'s11':10,'s12':11,'s13':12,'s14':13};
+  var io2 = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        var idx = map[entry.target.id];
+        if(idx !== undefined){
+          links.forEach(function(l){l.classList.remove('active');});
+          if(links[idx]) links[idx].classList.add('active');
+        }
+      }
+    });
+  }, {threshold:0.4});
+  sections.forEach(function(s){ io2.observe(s); });
+})();
+</script>
+</body>
+</html>
